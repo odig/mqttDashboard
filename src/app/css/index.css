@@ -1,0 +1,122 @@
+/*csslint empty-rules: false, important: false, adjoining-classes: false*/
+
+html {
+  background: grey;
+}
+
+/* grid */
+.homee {
+    display: grid;
+    /*grid-template-columns: repeat(4,1fr);*/
+    /*grid-template-columns: fit-content(40%);*/
+    /*grid-template-columns: minmax(100px, max-content)*/
+    /*grid-auto-columns: 1fr 1fr 1fr 1fr 1fr;*/
+    /*grid-auto-rows: minmax(max-content, 2fr);*/
+    grid-template-columns: repeat(auto-fill,minmax(20em,1fr));
+    grid-gap: 0;
+}
+
+.device {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: .5em;
+  display: block;
+}
+
+.nodeHeader {
+    display: grid;
+    grid-template-areas:
+        "icon title    title    title    title    title    title    title    title    title    title    json"
+        ".    subTitle subTitle subTitle subTitle subTitle subTitle subTitle subTitle subTitle subTitle .";
+    grid-column-gap: 5px;
+    grid-row-gap: 0;
+    margin-bottom: 1em;
+}
+
+.nodeIcon {
+    margin-right: 5px;
+    text-align: left;
+    font-size: 1.2rem;
+    grid-area: icon;
+}
+
+.nodeTitle {
+    grid-area: title;
+    text-align: left;
+    margin-right: 5px;
+}
+
+.nodeNote {
+    grid-area: subTitle;
+    text-align: left;
+}
+
+.nodeJson {
+    grid-area: json;
+    text-align: right;
+}
+
+.nodeDetails {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 0;
+    margin-left: 1em;
+}
+
+.dataField {
+    text-align: center;
+}
+
+.unitField {
+    text-align: center;
+}
+
+.jsonField {
+    text-align: right;
+}
+
+/* formatting */
+.device h1 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.device h2 {
+    font-size: .6rem;
+    margin: 0;
+}
+
+.cubeTypeZwave {
+    background-color: #b781fb;
+}
+
+.cubeTypeZigbee {
+    background-color: #f79a4f;
+}
+
+.cubeTypeEnOcean {
+    background-color: #6ad3bc;;
+}
+
+.cubeTypeWlan {
+    background-color: #aeaeae;
+}
+
+
+.jsonButton:active + .jsonData {
+    display: block;
+}
+
+.jsonData {
+    background: white;
+    display:none;
+    font-size: 1rem;
+    left: 50%;
+    min-width: 50%;
+    position: absolute;
+    top: 50%;
+    transform:translate(-50%,-50%);
+    width: 5em;
+    text-align: left;
+}
