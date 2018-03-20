@@ -5,12 +5,11 @@ export class MqttMessageList extends React.Component {
         return (
             this.props.mqttMessages.map((message, index) => {
                 return (
-                    < li key={message.topic} className="mqttMessageListElement">
+                    < li key={"MqttMessageList"+index} className="mqttMessageListElement">
                         <div className="mqttDataTopic">{message.topic}</div>
-                        <div className="mqttDataName">{message.name}</div>
-                        <div className="mqttDataValue">{message.data}</div>
-                        <div className="mqttDataUnit">{message.unit}</div>
-                        <div className="mqttDatatType">{message.unitString}</div>
+                        <div className="mqttDataName">{message.data.name}</div>
+                        <div className="mqttDataUnit">{message.data.unit}</div>
+                        <div className="mqttDataType">{message.data.unitString}</div>
                     </li >
                 )
             }, this)
@@ -29,3 +28,6 @@ export class MqttMessageList extends React.Component {
         );
     }
 }
+
+//<div className="mqttDataUnit">{message.data.unit}</div>
+//<div className="mqttDataType">{message.data.unitString}</div>

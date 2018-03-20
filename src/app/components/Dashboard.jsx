@@ -2,29 +2,22 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import { Link } from 'react-router'
 
+import { DashboardDetail } from './DashboardDetail.jsx'
+
 export class Dashboard extends React.Component {
-  displayMqtt() {
-    return (
-      <div>
-        <p>
-          topic: {this.props.mqttMessages[0] ? this.props.mqttMessages[0].topic : ""}
-          <br />
-          name: {this.props.mqttMessages[0] ? this.props.mqttMessages[0].data.name : ""}
-        </p>
-      </div>
-    )
+  displayMqttMessages() {
+    if (this.props.mqttMessages[0]) {
+      return (
+        <DashboardDetail mqttMessage={this.props.mqttMessages[0]} />
+      )
+    } 
   }
 
   render() {
     return (
       <div>
-        <h3>The Dashboard Page</h3>
-        {this.displayMqtt()}
+        {this.displayMqttMessages()}
       </div>
     )
   }
 }
-//  onNavigateMessageDetail(id) {
-//    browserHistory.push('mqttmessagedetail/' + id)
-//  }
-//        <button onClick={this.onNavigateMessageDetail(id)}>Details</button>

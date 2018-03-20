@@ -6,13 +6,12 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { Root } from './components/Root.jsx'
 import { Dashboard } from './components/Dashboard.jsx'
 import { MqttMessageList } from './components/MqttMessageList.jsx'
-import { MqttMessageDetail } from './components/MqttMessageDetail.jsx'
 
-//const Mqtt = require('./helper/mqtt')
+//css
+import '!style-loader!css-loader!./styles/index.css';
+
+//helper components
 import { Mqtt } from './helper/mqtt'
-
-//import * as styles from './css/index.css'
-//import './css/index.css'
 
 class App extends React.Component {
   constructor(props) {

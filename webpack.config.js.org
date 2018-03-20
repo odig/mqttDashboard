@@ -12,15 +12,21 @@ var config = {
   },
   devtool: 'source-map',
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ],  
     loaders: [
       {
-        test: /\.(js|jsx)?/,
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+      },
+      {
+        test: /\.js?/,
+        include: SRC_DIR,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-2']
+        }
+      },
+      {
+        test: /\.jsx?$/,
         include: SRC_DIR,
         loader: 'babel-loader',
         query: {

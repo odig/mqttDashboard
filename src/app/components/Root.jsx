@@ -38,13 +38,11 @@ export class Root extends React.Component {
     //console.log("++++++", this.props.mqtt)
     return (
       <div className="Root">
-        <Menu callback={this.menuCallback}/>
-        <hr />
         {this.displayComponent()}
-        <p>counter: {this.props.counter}</p>
       </div>
     )
   }
 }
 
-//  for router: {this.props.children}
+//<Menu callback={this.menuCallback} />
+//  <hr />
