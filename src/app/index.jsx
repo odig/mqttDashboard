@@ -8,7 +8,7 @@ import { Dashboard } from './components/Dashboard.jsx'
 import { MqttMessageList } from './components/MqttMessageList.jsx'
 
 //css
-import '!style-loader!css-loader!./styles/index.css';
+import './styles/index.css'
 
 //helper components
 import { Mqtt } from './helper/mqtt'
