@@ -1,34 +1,44 @@
-var path = require('path')
+const path = require('path')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-var DIST_DIR = path.resolve(__dirname, 'dist')
-var SRC_DIR = path.resolve(__dirname, 'src')
+const DIST_DIR = path.resolve(__dirname, 'dist')
+const SRC_DIR = path.resolve(__dirname, 'src')
 
-var config = {
-  entry: SRC_DIR + '/app/index.js',
-  output: {
-    path: DIST_DIR + '/app',
-    filename: 'bundle.js',
-    publicPath: '/app/'
-  },
-  devtool: 'source-map',
+module.exports = {
+  entry: `${SRC_DIR}/app/index.jsx`,
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "index.css"
+    })
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ],  
-    loaders: [
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
       {
-        test: /\.(js|jsx)?/,
-        include: SRC_DIR,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-2']
-        }
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          "css-loader"
+        ]
       }
     ]
-  }
-}
-
-module.exports = config
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.css']
+  },
+  output: {
+    path: `${DIST_DIR}/app`,
+    publicPath: '/app/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  },
+  devtool: 'source-map'
+};
